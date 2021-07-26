@@ -1,0 +1,82 @@
+using System;
+
+namespace DayOfWeek
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double Budget = double.Parse(Console.ReadLine());
+            string Season = Console.ReadLine();
+            double Fisherman = double.Parse(Console.ReadLine());
+            double Discont = 1.00;
+            double DiscountPlus = 1.00;
+            double PriceOfBoat = 0.00;
+            if (Season == "Spring")
+            {
+                PriceOfBoat = 3000.00;
+                if (Fisherman <= 6)
+                {
+                    Discont = 0.90;
+                }
+                else if (Fisherman <= 11)
+                {
+                    Discont = 0.85;
+                }
+                else
+                {
+                    Discont = 0.75;
+                }
+            }
+            else if (Season == "Summer" || Season == "Autumn")
+            {
+                PriceOfBoat = 4200.00;
+                if (Fisherman <= 6)
+                {
+                    Discont = 0.90;
+                }
+                else if (Fisherman <= 11)
+                {
+                    Discont = 0.85;
+                }
+                else
+                {
+                    Discont = 0.75;
+                }
+            }
+            else if (Season == "Winter")
+            {
+                PriceOfBoat = 2600.00;
+                if (Fisherman <= 6)
+                {
+                    Discont = 0.90;
+                }
+                else if (Fisherman <= 11)
+                {
+                    Discont = 0.85;
+                }
+                else
+                {
+                    Discont = 0.75;
+                }
+            }
+            if (Fisherman % 2 == 0 && Season != "Autumn")
+            {
+                DiscountPlus = 0.95;
+            }
+            else
+            {
+                DiscountPlus = 1.00;
+            }
+            Double Total = PriceOfBoat * Discont * DiscountPlus;
+            if (Total <= Budget)
+            { 
+                Console.WriteLine($"Yes! You have {(Budget - Total):F2} leva left.");
+            }
+            else
+            {
+                Console.WriteLine($"Not enough money! You need {(Total - Budget):F2} leva.");
+            }
+        }
+    }
+}
